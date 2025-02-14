@@ -1,5 +1,6 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import { db } from './dbConnection';
 
 export const createuser = async (formData: FormData) => {
@@ -15,4 +16,5 @@ export const createuser = async (formData: FormData) => {
     `INSERT INTO users (first_name, last_name, username, profile_url, bio, location, clerk_id) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
     [firstName, lastName, username, src, bio, location, id]
   );
+  redirect(`user/${username}`);
 };
