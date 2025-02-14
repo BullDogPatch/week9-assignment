@@ -3,7 +3,7 @@ import { fetchPostsByUsername, fetchUser } from '@/utils/api';
 import { Posts, User } from '@/utils/types';
 import Post from '@/components/Post';
 import Stack from '@mui/material/Stack';
-import { Box, ListItem } from '@mui/material';
+import { Box } from '@mui/material';
 
 type Params = {
   params: Promise<{ username: string }>;
