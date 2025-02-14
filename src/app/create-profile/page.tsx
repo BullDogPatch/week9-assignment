@@ -3,7 +3,6 @@ import { auth } from '@clerk/nextjs/server';
 
 const CreateProfilePage = async () => {
   const { userId } = await auth();
-  console.log(typeof userId);
   return (
     <form action={createuser} className='flex flex-col'>
       <input type='hidden' name='clerk_id' value={userId ?? ''} />
@@ -12,18 +11,21 @@ const CreateProfilePage = async () => {
         placeholder='first name'
         name='first_name'
         className='input input-bordered w-full max-w-xs'
+        required
       />
       <input
         type='text'
         placeholder='last name'
         name='last_name'
         className='input input-bordered w-full max-w-xs'
+        required
       />
       <input
         type='text'
         placeholder='username'
         name='username'
         className='input input-bordered w-full max-w-xs'
+        required
       />
       <input
         type='text'
@@ -36,11 +38,13 @@ const CreateProfilePage = async () => {
         placeholder='location'
         name='location'
         className='input input-bordered w-full max-w-xs'
+        required
       />
       <textarea
         className='textarea textarea-bordered resize-none'
         placeholder='Bio'
         name='bio'
+        required
       ></textarea>
       <button type='submit'>Submit</button>
     </form>
