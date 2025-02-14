@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import { fetchPostsByUsername, fetchUser } from '@/utils/api';
 import { Posts, User } from '@/utils/types';
 import Post from '@/components/Post';
+import Stack from '@mui/material/Stack';
+import { Box, ListItem } from '@mui/material';
 
 type Params = {
   params: Promise<{ username: string }>;
@@ -22,13 +24,15 @@ const UserPage = async ({ params }: Params) => {
           <img src={user?.profile_url} />
         </div>
       </div>
-      <ul>
-        {posts.length === 0 ? (
-          <p>No posts yet</p>
-        ) : (
-          posts.map((post) => <Post key={post.id} post={post} />)
-        )}
-      </ul>
+      <Box>
+        <Stack spacing={3}>
+          {posts.length === 0 ? (
+            <p>No posts yet</p>
+          ) : (
+            posts.map((post) => <Post key={post.id} post={post} />)
+          )}
+        </Stack>
+      </Box>
     </div>
   );
 };
