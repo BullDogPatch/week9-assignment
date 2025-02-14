@@ -6,3 +6,9 @@ export type User = {
   profile_url?: string;
   username: string;
 };
+
+export type Posts = {
+  id: number;
+  title: string;
+  description: string;
+}[];
