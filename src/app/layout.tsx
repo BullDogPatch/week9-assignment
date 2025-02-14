@@ -39,7 +39,7 @@ export default function RootLayout({
         >
           <Header />
           {/* Style this main later to make every page the same */}
-          <main>{children}</main>
+          <main className='h-[80vh]'>{children}</main>
         </body>
       </html>
     </ClerkProvider>
