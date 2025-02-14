@@ -1,6 +1,12 @@
-const CreatePostPage = () => {
+import { createPost } from '@/utils/actions';
+import { auth } from '@clerk/nextjs/server';
+
+const CreatePostPage = async () => {
+  const { userId } = await auth();
   return (
-    <form className='flex flex-col'>
+    <form action={createPost} className='flex flex-col'>
+      <input type='hidden' name='clerk_id' value={userId ?? ''} />
+
       <input
         type='text'
         placeholder='What is on your mind?'
@@ -14,6 +20,7 @@ const CreatePostPage = () => {
         name='description'
         required
       ></textarea>
+      <button type='submit'>Submit</button>
     </form>
   );
 };

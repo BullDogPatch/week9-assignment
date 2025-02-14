@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { fetchUser } from '@/utils/api';
+import { fetchPostsByUsername, fetchUser } from '@/utils/api';
 import { User } from '@/utils/types';
 
 type Params = {
@@ -9,6 +9,8 @@ type Params = {
 const UserPage = async ({ params }: Params) => {
   const { username } = await params;
   const user: User = await fetchUser(username);
+  const posts = await fetchPostsByUsername(username);
+  console.log(posts);
   if (!user) notFound();
   console.log(user);
   return (
