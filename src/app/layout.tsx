@@ -38,7 +38,8 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Header />
-          {children}
+          {/* Style this main later to make every page the same */}
+          <main>{children}</main>
         </body>
       </html>
     </ClerkProvider>
