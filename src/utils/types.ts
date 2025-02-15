@@ -10,5 +10,6 @@ export type User = {
 export type Posts = {
   id: number;
   title: string;
+  image: string;
   description: string;
 }[];

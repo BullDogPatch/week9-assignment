@@ -19,5 +19,5 @@ export const fetchPostsByUsername = async (username: string) => {
     [username]
   );
 
-  return posts;
+  return posts.rows;
 };

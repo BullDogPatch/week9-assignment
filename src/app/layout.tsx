@@ -32,7 +32,7 @@ export default function RootLayout({
         >
           <Header />
           {/* Style this main later to make every page the same */}
-          <main className='h-[80vh]'>{children}</main>
+          <main className='min-h-screen flex justify-center'>{children}</main>
         </body>
       </html>
     </ClerkProvider>

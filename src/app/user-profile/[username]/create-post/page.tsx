@@ -14,6 +14,13 @@ const CreatePostPage = async () => {
         className='input input-bordered w-full max-w-xs'
         required
       />
+      <input
+        type='text'
+        placeholder='www.example.com'
+        name='image'
+        className='input input-bordered w-full max-w-xs'
+        required
+      />
       <textarea
         className='textarea textarea-bordered resize-none'
         placeholder='Write anything here.'

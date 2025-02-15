@@ -23,6 +23,7 @@ export const createuser = async (formData: FormData) => {
 export const createPost = async (formData: FormData) => {
   const id = formData.get('clerk_id');
   const title = formData.get('title');
+  const image = formData.get('image');
   const description = formData.get('description');
 
   const user = await db.query(
@@ -34,14 +35,15 @@ export const createPost = async (formData: FormData) => {
 
   const username = user.rows[0].username;
   await db.query(
-    `INSERT INTO user_posts (user_id, title, description)
+    `INSERT INTO user_posts (user_id, title, image, description)
 VALUES (
   (SELECT id FROM users WHERE clerk_id = $1),
   $2,
-  $3
+  $3,
+  $4
 )
 RETURNING *`,
-    [id, title, description]
+    [id, title, image, description]
   );
   revalidatePath(`/user-profile/${username}`);
   redirect(`/user-profile/${username}`);
