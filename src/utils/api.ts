@@ -37,6 +37,7 @@ export const fetchPosts = async () => {
       u.clerk_id -- Add this line
     FROM user_posts up
     JOIN users u ON up.user_id = u.id
+    ORDER BY created_at DESC
   `);
 
   return posts.rows;
