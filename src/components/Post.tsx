@@ -8,7 +8,7 @@ const Post = async ({ post }: { post: UserPost }) => {
   const canEdit = user && post.clerk_id === user.id;
 
   return (
-    <li className='flex flex-col items-center border-2 border-gray-700 rounded-md p-4 shadow-md bg-gray-800 text-white space-y-3'>
+    <li className='flex flex-col items-center border-2 border-gray-700 rounded-md p-4 shadow-md bg-gray-800 text-white space-y-3 w-full max-w-md mx-auto'>
       <p className='text-xl font-semibold'>{post.username}</p>
       <h3 className='text-lg font-bold'>{post.title}</h3>
       <img

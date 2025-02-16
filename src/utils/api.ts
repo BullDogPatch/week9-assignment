@@ -11,10 +11,12 @@ export const fetchUser = async (username: string) => {
 
 export const fetchPostsByUsername = async (username: string) => {
   const posts = await db.query(
-    ` SELECT * 
-    FROM user_posts 
-    WHERE user_id = (SELECT id FROM users WHERE username = $1)
-    ORDER BY created_at DESC
+    `
+    SELECT up.id, up.title, up.description, up.image, up.created_at, u.username, u.clerk_id
+    FROM user_posts up
+    JOIN users u ON up.user_id = u.id
+    WHERE u.username = $1
+    ORDER BY up.created_at DESC
     `,
     [username]
   );

@@ -5,8 +5,8 @@ import { Posts } from '@/utils/types';
 const PostsPage = async () => {
   const posts: Posts = await fetchPosts();
   return (
-    <div>
-      <ul>
+    <div className='space-y-4'>
+      <ul className='space-y-4'>
         {posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}

@@ -43,7 +43,11 @@ const UserPage = async ({ params }: Params) => {
             </Link>
           </div>
         ) : (
-          posts.map((post) => <Post key={post.id} post={post} />)
+          <ul className='mt-4 space-y-4'>
+            {posts.map((post) => (
+              <Post key={post.id} post={post} />
+            ))}
+          </ul>
         )}
       </ul>
     </div>
