@@ -6,11 +6,14 @@ import {
   UserButton,
 } from '@clerk/nextjs';
 import { Button } from './ui/button';
+import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className='flex justify-between p-6'>
-      <h1>ShitPoster</h1>
+    <header className='flex justify-between items-center p-6 border-b-2 border-blue-600 mb-7'>
+      <Link href='/'>
+        <h1 className='font-bold text-2xl'>ShitPoster</h1>
+      </Link>
       <div>
         <SignedOut>
           <SignInButton>
