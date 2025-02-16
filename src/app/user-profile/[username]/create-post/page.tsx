@@ -6,7 +6,7 @@ const CreatePostPage = async () => {
   const user = await currentUser();
   return (
     <>
-      <p className='mb-6 text-lg font-semibold'>Create your profile</p>
+      <p className='mb-6 text-lg font-semibold'>Create a post</p>
       <form action={createPost} className='flex flex-col'>
         <input type='hidden' name='clerk_id' value={user?.id} />
 

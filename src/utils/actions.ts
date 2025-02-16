@@ -76,3 +76,23 @@ export const updatePost = async (formData: FormData) => {
   revalidatePath(`/posts`);
   redirect(`/posts`);
 };
+export const deletePost = async (formData: FormData) => {
+  const id = formData.get('id');
+
+  const { userId } = await auth();
+
+  const result = await db.query(
+    `DELETE FROM user_posts 
+     WHERE id = $1 AND user_id = (SELECT id FROM users WHERE clerk_id = $2)`,
+    [id, userId]
+  );
+
+  if (result.rowCount === 0) {
+    throw new Error(
+      'Post not found or you do not have permission to delete it.'
+    );
+  }
+
+  revalidatePath('/posts');
+  redirect('/posts');
+};
