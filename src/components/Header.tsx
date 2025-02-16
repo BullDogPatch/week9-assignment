@@ -24,7 +24,15 @@ const Header = () => {
           </SignUpButton>
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <div className='flex items-center'>
+            <Link
+              className='bg-slate-900 p-2 m-2 rounded-lg hover:bg-slate-800'
+              href='/posts'
+            >
+              Posts
+            </Link>
+            <UserButton />
+          </div>
         </SignedIn>
       </div>
     </header>
