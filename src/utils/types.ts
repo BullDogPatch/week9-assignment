@@ -15,3 +15,12 @@ export type Posts = {
   description: string;
   created_at: string;
 }[];
+
+export type UserPost = {
+  username: string;
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+  created_at: string;
+};

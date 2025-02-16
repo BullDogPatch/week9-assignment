@@ -1,16 +1,7 @@
 import { formatDate } from '@/utils/dateFormatter';
+import { UserPost } from '@/utils/types';
 
-const Post = ({
-  post,
-}: {
-  post: {
-    username: string;
-    title: string;
-    image: string;
-    description: string;
-    created_at: string;
-  };
-}) => {
+const Post = ({ post }: { post: UserPost }) => {
   return (
     <li className='flex items-center flex-col border-2 border-red-400 rounded-md'>
       <p>{post.username}</p>
