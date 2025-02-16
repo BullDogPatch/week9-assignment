@@ -10,6 +10,21 @@ export type User = {
 export type Posts = {
   id: number;
   title: string;
-  image: string;
   description: string;
+  image: string;
+  likes: number;
+  created_at: string;
+  username: string;
+  clerk_id: string;
 }[];
+
+export type UserPost = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  likes: number;
+  created_at: string;
+  username: string;
+  clerk_id: string;
+};
