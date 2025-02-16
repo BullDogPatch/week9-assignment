@@ -8,8 +8,10 @@ export type User = {
 };
 
 export type Posts = {
+  username: string;
   id: number;
   title: string;
   image: string;
   description: string;
+  created_at: string;
 }[];

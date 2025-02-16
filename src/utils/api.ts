@@ -23,7 +23,18 @@ export const fetchPostsByUsername = async (username: string) => {
 };
 
 export const fetchPosts = async () => {
-  const posts = await db.query(`SELECT * 
-    FROM user_posts`);
+  const posts = await db.query(`
+    SELECT 
+      up.id, 
+      up.title, 
+      up.description, 
+      up.image,
+      up.likes, 
+      up.created_at, 
+      u.username
+    FROM user_posts up
+    JOIN users u ON up.user_id = u.id
+    `);
+
   return posts.rows;
 };
