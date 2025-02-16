@@ -14,7 +14,7 @@ const EditPostPage = async ({ params }: Params) => {
   return (
     <form action={updatePost} className='flex flex-col'>
       <Link
-        href={`/posts/${id}`}
+        href={`/posts`}
         className='text-blue-500 hover:underline mb-4 block'
       >
         ← Back
