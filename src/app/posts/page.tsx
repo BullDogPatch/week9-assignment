@@ -4,7 +4,6 @@ import { Posts } from '@/utils/types';
 
 const PostsPage = async () => {
   const posts: Posts = await fetchPosts();
-  console.log(posts);
   return (
     <div>
       <ul>
