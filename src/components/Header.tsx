@@ -5,6 +5,7 @@ import {
   SignUpButton,
   UserButton,
 } from '@clerk/nextjs';
+import { Button } from './ui/button';
 
 const Header = () => {
   return (
@@ -12,8 +13,12 @@ const Header = () => {
       <h1>ShitPoster</h1>
       <div>
         <SignedOut>
-          <SignInButton />
-          <SignUpButton />
+          <SignInButton>
+            <Button className='m-2'>Sign in</Button>
+          </SignInButton>
+          <SignUpButton>
+            <Button className='m-2'>Sign Up</Button>
+          </SignUpButton>
         </SignedOut>
         <SignedIn>
           <UserButton />
