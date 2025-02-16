@@ -1,3 +1,4 @@
+import SubmitButton from '@/components/SubmitButton';
 import { updatePost } from '@/utils/actions';
 import { fetchPostById } from '@/utils/api';
 
@@ -12,14 +13,24 @@ const EditPostPage = async ({ params }: Params) => {
   return (
     <form action={updatePost} className='flex flex-col'>
       <input type='hidden' name='id' value={id} />
-      <input type='text' name='title' defaultValue={post.title} />
-      <input type='text' name='image' defaultValue={post.image} />
+      <input
+        type='text'
+        name='title'
+        defaultValue={post.title}
+        className='input input-bordered w-full max-w-xs mb-4'
+      />
+      <input
+        type='text'
+        name='image'
+        defaultValue={post.image}
+        className='input input-bordered w-full max-w-xs mb-4'
+      />
       <textarea
         name='content'
         defaultValue={post.description}
-        className='resize-none'
+        className='input input-bordered w-full max-w-xs mb-4 resize-none'
       ></textarea>
-      <button type='submit'>Save</button>
+      <SubmitButton text='Submit' />
     </form>
   );
 };

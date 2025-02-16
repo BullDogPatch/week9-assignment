@@ -1,3 +1,4 @@
+import SubmitButton from '@/components/SubmitButton';
 import { createuser } from '@/utils/actions';
 import { currentUser } from '@clerk/nextjs/server';
 
@@ -46,7 +47,7 @@ const CreateProfilePage = async () => {
         name='bio'
         required
       ></textarea>
-      <button type='submit'>Submit</button>
+      <SubmitButton text='Submit' />
     </form>
   );
 };

@@ -43,7 +43,7 @@ export const fetchPosts = async () => {
 export const fetchPostById = async (postId: number) => {
   const result = await db.query(
     `
-    SELECT title, description 
+    SELECT title, description, image
     FROM user_posts
     WHERE id = $1
     `,
