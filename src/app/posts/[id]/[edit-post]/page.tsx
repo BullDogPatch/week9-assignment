@@ -7,7 +7,7 @@ type Params = {
   params: Promise<{ id: number }>;
 };
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata({ params }: Params) {
   const { id } = await params;
   const post = await fetchPostById(id);
   if (!post) return { title: 'Post Not Found' };
