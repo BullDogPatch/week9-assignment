@@ -32,7 +32,7 @@ const UserPage = async ({ params }: Params) => {
       </div>
       <ul className='mt-4'>
         {posts.length === 0 ? (
-          <>
+          <div className='text-center'>
             <p>You have no posts yet</p>
             <Link
               href={`${username}/create-post`}
@@ -41,7 +41,7 @@ const UserPage = async ({ params }: Params) => {
               <FaPlus className='mr-1' />
               <span>Create</span>
             </Link>
-          </>
+          </div>
         ) : (
           posts.map((post) => <Post key={post.id} post={post} />)
         )}

@@ -1,11 +1,11 @@
 import { createuser } from '@/utils/actions';
-import { auth } from '@clerk/nextjs/server';
+import { currentUser } from '@clerk/nextjs/server';
 
 const CreateProfilePage = async () => {
-  const { userId } = await auth();
+  const user = await currentUser();
   return (
     <form action={createuser} className='flex flex-col'>
-      <input type='hidden' name='clerk_id' value={userId ?? ''} />
+      <input type='hidden' name='clerk_id' value={user?.id} />
       <input
         type='text'
         placeholder='first name'

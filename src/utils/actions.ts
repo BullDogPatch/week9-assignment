@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { db } from './dbConnection';
 import { revalidatePath } from 'next/cache';
+import { auth } from '@clerk/nextjs/server';
 
 export const createuser = async (formData: FormData) => {
   const id = formData.get('clerk_id');
@@ -47,4 +48,32 @@ RETURNING *`,
   );
   revalidatePath(`/user-profile/${username}`);
   redirect(`/user-profile/${username}`);
+};
+
+export const updatePost = async (
+  postId: number,
+  title: string,
+  description: string
+) => {
+  const { userId } = await auth();
+
+  if (!userId) {
+    throw new Error('Unauthorized: No user ID found.');
+  }
+
+  const result = await db.query(
+    `
+    UPDATE user_posts
+    SET title = $1, description = $2
+    WHERE id = $3 AND user_id = (SELECT id FROM users WHERE clerk_id = $4)
+    RETURNING *
+    `,
+    [title, description, postId, userId]
+  );
+
+  if (result.rowCount === 0) {
+    throw new Error('Unauthorized: Post not found or user mismatch.');
+  }
+
+  return result.rows[0];
 };

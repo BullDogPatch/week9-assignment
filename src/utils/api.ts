@@ -21,3 +21,9 @@ export const fetchPostsByUsername = async (username: string) => {
 
   return posts.rows;
 };
+
+export const fetchPosts = async () => {
+  const posts = await db.query(`SELECT * 
+    FROM user_posts`);
+  return posts.rows;
+};

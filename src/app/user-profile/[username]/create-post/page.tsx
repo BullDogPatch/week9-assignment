@@ -1,11 +1,11 @@
 import { createPost } from '@/utils/actions';
-import { auth } from '@clerk/nextjs/server';
+import { currentUser } from '@clerk/nextjs/server';
 
 const CreatePostPage = async () => {
-  const { userId } = await auth();
+  const user = await currentUser();
   return (
     <form action={createPost} className='flex flex-col'>
-      <input type='hidden' name='clerk_id' value={userId ?? ''} />
+      <input type='hidden' name='clerk_id' value={user?.id} />
 
       <input
         type='text'
