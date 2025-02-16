@@ -9,6 +9,17 @@ type Params = {
   params: Promise<{ username: string }>;
 };
 
+export async function generateMetadata({ params }: any) {
+  const { username } = params;
+  const user = await fetchUser(username);
+  if (!user) return { title: 'User Not Found' };
+
+  return {
+    title: `${user.username}'s Profile`,
+    description: `See posts by ${user.username} on ShotPoster.`,
+  };
+}
+
 const UserPage = async ({ params }: Params) => {
   const { username } = await params;
   const user: User = await fetchUser(username);
