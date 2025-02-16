@@ -10,7 +10,12 @@ const Post = async ({ post }: { post: UserPost }) => {
 
   return (
     <li className='flex flex-col items-center border-2 border-gray-700 rounded-md p-4 shadow-md bg-gray-800 text-white space-y-3 w-full max-w-md mx-auto'>
-      <p className='text-xl font-semibold'>{post.username}</p>
+      <Link
+        href={`/user-profile/${post.username}`}
+        className='text-xl font-semibold hover:underline'
+      >
+        {post.username}
+      </Link>
       <h3 className='text-lg font-bold'>{post.title}</h3>
       <img
         src={post.image}
