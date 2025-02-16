@@ -1,6 +1,7 @@
 import SubmitButton from '@/components/SubmitButton';
 import { updatePost } from '@/utils/actions';
 import { fetchPostById } from '@/utils/api';
+import Link from 'next/link';
 
 type Params = {
   params: Promise<{ id: number }>;
@@ -12,6 +13,12 @@ const EditPostPage = async ({ params }: Params) => {
 
   return (
     <form action={updatePost} className='flex flex-col'>
+      <Link
+        href={`/posts/${id}`}
+        className='text-blue-500 hover:underline mb-4 block'
+      >
+        ← Back
+      </Link>
       <input type='hidden' name='id' value={id} />
       <input
         type='text'

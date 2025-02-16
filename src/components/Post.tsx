@@ -8,13 +8,24 @@ const Post = async ({ post }: { post: UserPost }) => {
   const canEdit = user && post.clerk_id === user.id;
 
   return (
-    <li className='flex items-center flex-col border-2 border-red-400 rounded-md'>
-      <p>{post.username}</p>
-      <p>{post.title}</p>
-      <img src={post.image} className='h-[100px] w-[100px]' />
-      <p>{post.description}</p>
-      <p>{formatDate(post.created_at)}</p>
-      {canEdit && <Link href={`/posts/${[post.id]}/edit-post`}>Edit</Link>}
+    <li className='flex flex-col items-center border-2 border-gray-700 rounded-md p-4 shadow-md bg-gray-800 text-white space-y-3'>
+      <p className='text-xl font-semibold'>{post.username}</p>
+      <h3 className='text-lg font-bold'>{post.title}</h3>
+      <img
+        src={post.image}
+        className='h-40 w-40 object-cover rounded-md'
+        alt='Post image'
+      />
+      <p className='text-sm text-gray-300'>{post.description}</p>
+      <p className='text-xs text-gray-500'>{formatDate(post.created_at)}</p>
+      {canEdit && (
+        <Link
+          href={`/posts/${post.id}/edit-post`}
+          className='mt-2 px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition'
+        >
+          Edit
+        </Link>
+      )}
     </li>
   );
 };

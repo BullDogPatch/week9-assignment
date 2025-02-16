@@ -9,7 +9,7 @@ import {
 const Header = () => {
   return (
     <header className='flex justify-between p-6'>
-      <h1>Social</h1>
+      <h1>ShitPoster</h1>
       <div>
         <SignedOut>
           <SignInButton />
