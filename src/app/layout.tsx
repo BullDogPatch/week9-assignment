@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Header from '@/components/Header';
+import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 
 const geistSans = Geist({
@@ -30,6 +31,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <NextTopLoader showSpinner={false} />
           <Header />
           {/* Style this main later to make every page the same */}
           <main className='min-h-screen flex justify-center'>{children}</main>
